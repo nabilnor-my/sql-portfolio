@@ -10,7 +10,7 @@ Each project is organized in its own folder with:
 - `README.md` — explanation of the project
 
 ### 1. Birth Data Analysis
-- **Folder**: `01_birth_data_analysis`
+- **Folder**: [`01_birth_data_analysis`](01_birth_data_analysis)
 - **Dataset**: `bigquery-public-data.samples.natality`
 - **Description**: Explores average birth weights, counts, and trends per year and state.  
 - **Skills**: Aggregations, CTEs, window functions, filtering, ranking.
