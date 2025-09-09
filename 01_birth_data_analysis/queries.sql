@@ -11,13 +11,14 @@ SELECT
   year,
   state,
   avg_wg,
-  LAG(avg_wg) OVER (
-    PARTITION BY state 
-    ORDER BY year ASC
-  ) AS prv_wg,
-  avg_wg - LAG(avg_wg) OVER (
-    PARTITION BY state 
-    ORDER BY year ASC
-  ) AS wg_diff 
-FROM wg_by_yr
+  avg_wg - prv_wg AS wg_diff 
+FROM (
+  SELECT
+    *,
+    LAG(avg_wg) OVER (
+      PARTITION BY state 
+      ORDER BY year ASC
+    ) AS prv_wg
+  FROM wg_by_yr
+)
 ORDER BY state, year ASC;
