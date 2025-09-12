@@ -20,8 +20,8 @@ This demonstrates the use of **aggregations, window functions, and growth rate c
 
 ### 2. Month-over-Month Comparison
 - Applies `LAG()` to bring forward the previous month’s revenue.
-- Computes **absolute revenue growth** (`rev - prev_rev`).
-- Computes **percentage growth** (`(rev - prev_rev)/prev_rev * 100`).
+- Computes **absolute revenue growth** (`total_revenue - revenue_lag_1m`).
+- Computes **percentage growth** (`(total_revenue - revenue_lag_1m)/revenue_lag_1m*100`).
 
 ### 3. Handling Edge Cases
 - Applies `COALESCE()` in percentage growth calculation to avoid division by zero. 
@@ -33,7 +33,6 @@ This demonstrates the use of **aggregations, window functions, and growth rate c
 - **Aggregations**: `SUM()` for revenue
 - **Window Functions**: `LAG()` for previous month comparison
 - **Growth Calculations**: Absolute and percentage growth
-- **Error Handling**: Preventing divide-by-zero with `NULLIF`
 
 ---
 
