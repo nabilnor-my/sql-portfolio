@@ -15,6 +15,12 @@ Each project is organized in its own folder with:
 - **Description**: Explores average birth weights, counts, and trends per year and state.  
 - **Skills**: Aggregations, CTEs, window functions, filtering, ranking.
 
+### 2. Sales Insights Analysis
+- **Folder**: [`02_sales_insights_analysis`](02_sales_insights_analysis)
+- **Dataset**: `bigquery-public-data.thelook_ecommerce`
+- **Description**: Analyzes sales performance trends, including revenue growth patterns over time.  
+- **Skills**: Time-series analysis, revenue growth calculation, handling nulls with `COALESCE`, advanced window functions.
+
 ## 💡 Key SQL Skills Demonstrated
 - Aggregations (`SUM`, `COUNT`, `AVG`)
 - Filtering (`WHERE`, `HAVING`, `BETWEEN`)
