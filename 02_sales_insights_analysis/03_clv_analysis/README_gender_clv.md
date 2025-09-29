@@ -1,0 +1,76 @@
+# Task 3.1: Customer Lifetime Value by Gender
+
+## 📌 Goal
+The goal of this task is to calculate and compare **Customer Lifetime Value (CLV)** across gender segments.  
+This provides insight into whether **male or female customers** generate higher long-term value for the business.
+
+---
+
+## 📂 Dataset
+- **Source**:  
+  - `bigquery-public-data.thelook_ecommerce.orders`  
+  - `bigquery-public-data.thelook_ecommerce.order_items`  
+  - `bigquery-public-data.thelook_ecommerce.users`  
+- **Description**: Dataset includes order transactions, purchased items, and user demographics, restricted to **U.S. customers with completed orders**.
+
+---
+
+## 💻 Queries Overview
+
+### 1. Data Preparation
+- Joined **orders**, **order items**, and **users**.  
+- Filtered only for **completed U.S. orders**.  
+
+### 2. User-Level Metrics
+For each customer:
+- **Revenue** = `SUM(sale_price)`  
+- **Order Count** = `COUNT(DISTINCT order_id)`  
+- **Lifespan** = `MAX(order_date) - MIN(order_date)` in months  
+
+### 3. CLV Components
+- **AOV (Average Order Value)** = Revenue ÷ Order Count  
+- **Purchase Frequency** = Orders ÷ Lifespan (per month)  
+- **CLV per User** = AOV × Purchase Frequency × Lifespan  
+
+### 4. Aggregation by Gender
+- Rolled up user-level CLV to gender segments:
+  - **Total Customers**  
+  - **Total Revenue**  
+  - **Average Revenue per Customer**  
+  - **Average Orders per Customer**  
+  - **Average CLV per Customer**  
+  - **Total CLV (sum of individuals)**  
+
+---
+
+## 🛠 Skills Demonstrated
+- **Multi-table joins** across orders, items, and users.  
+- **Customer-level aggregation** before segmentation.  
+- **CLV calculation formula** (AOV × Frequency × Lifespan).  
+- **Segmentation** at the gender level.  
+- **Aggregated KPIs**: both total and average metrics.  
+
+---
+
+## 📊 Results
+
+| Gender | Customers | Gender Revenue | Avg Revenue per Customer | Avg Orders per Customer | Avg CLV per Customer | Total CLV |
+|--------|-----------|----------------|--------------------------|--------------------------|----------------------|-----------|
+| Female | 3,148     | \$283,123      | \$89.94                  | 1.13                     | 18.4                 | 58,059.6  |
+| Male   | 3,028     | \$319,249      | \$105.43                 | 1.13                     | 21.9                 | 66,426.2  |
+
+---
+
+## 🔗 Insights
+- **Revenue Gap**: Male customers contribute **more total revenue** (~\$36k higher) despite a smaller customer base.  
+- **Higher Value per Customer**: Males average **\$105 per customer** vs. females at **\$90**.  
+- **Consistent Order Frequency**: Both genders average ~1.13 orders per customer, meaning higher revenue is not due to order count but **order size (AOV)**.  
+- **CLV Difference**: Average CLV is **~19% higher for males** (21.9 vs. 18.4).  
+- **Implication**: Marketing and retention strategies may yield greater ROI when targeted at **male customers**, though females represent a **larger base (120 more customers)** and shouldn’t be neglected.  
+
+---
+
+## 📄 Files in this Folder
+- `queries.sql` → SQL scripts for gender CLV analysis  
+- `results.csv` → Exported BigQuery results  
+- `README.md` → This file  
