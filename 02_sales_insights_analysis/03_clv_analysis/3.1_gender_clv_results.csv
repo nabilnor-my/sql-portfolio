@@ -1,0 +1,3 @@
+gender,total_customer,gender_aov,avg_revenue_per_customer,avg_orders_per_customer,gender_revenue,gender_clv,avg_gender_revenue,avg_gender_clv
+F,3148,79.51,89.94,1.13,283123.26,58059.6,89.94,18.4
+M,3028,93.1,105.43,1.13,319248.99,66426.2,105.43,21.9
